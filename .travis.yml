@@ -1,13 +1,37 @@
 language: ruby
-script: "bundle exec rake spec"
-rvm:
-  - 2.6.6
+rvm: '2.6.6'
+sudo: true
+
 env:
-  - CODECLIMATE_REPO_TOKEN=5efe53fe1d955a405cb8afc1b42883dc9243c4311d71ec082795de820c5d8284
+  global:
+    - CC_TEST_REPORTER_ID=5efe53fe1d955a405cb8afc1b42883dc9243c4311d71ec082795de820c5d8284
+
+before_install:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+
+before_script:
+  - ./cc-test-reporter before-build
+
+after_script:
+  - ./cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.backend.json coverage/backend/.resultset.json # Format backend coverage
+  - ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.frontend.json coverage/frontend/lcov.info  # Format frontend coverage
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2                  # Sum both coverage parts into coverage/codeclimate.json
+  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi  # Upload coverage/codeclimate.json
+
+script:
+  - bundle exec rake spec
+
+branches:
+  only:
+    - develop
+    - master
+
+cache:
+  bundler: true
+
+
 gemfile:
   - gemfiles/rails_60.gemfile
 notifications:
   email: false
-addons:
-  code_climate:
-    repo_token: 5efe53fe1d955a405cb8afc1b42883dc9243c4311d71ec082795de820c5d8284
