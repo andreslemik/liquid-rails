@@ -1,12 +1,17 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 module Liquid
   module Rails
     describe TranslateFilter do
       let(:context) { ::Liquid::Context.new }
+      let(:lookup_context) do
+        ActionView::LookupContext.new(File.expand_path('app/views'))
+      end
 
       before do
-        context.registers[:view] = ActionView::Base.new
+        context.registers[:view] = ActionView::Base.new(lookup_context)
       end
 
       it 'translate with default locale' do
