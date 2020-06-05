@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/chamnap/liquid-rails.svg?branch=master)](https://travis-ci.org/yoolk/liquid-rails)[![Coverage Status](https://coveralls.io/repos/yoolk/liquid-rails/badge.png?branch=master)](https://coveralls.io/r/yoolk/liquid-rails?branch=master)[![Gem Version](https://badge.fury.io/rb/liquid-rails.svg)](http://badge.fury.io/rb/liquid-rails)
+[![Build Status](https://travis-ci.org/andreslemik/liquid-rails.svg?branch=master)](https://travis-ci.org/andreslemik/liquid-rails)
+[![Coverage Status](https://coveralls.io/repos/yoolk/liquid-rails/badge.png?branch=master)](https://coveralls.io/r/yoolk/liquid-rails?branch=master)
+[![Gem Version](https://badge.fury.io/rb/liquid-rails.svg)](http://badge.fury.io/rb/liquid-rails)
+[![Maintainability](https://api.codeclimate.com/v1/badges/92be0ba1bb4312fe8ea8/maintainability)](https://codeclimate.com/github/andreslemik/liquid-rails/maintainability)
 # Liquid-Rails
 
 It allows you to render `.liquid` templates with layout and partial support. It also provides filters, tags, drops class to be used inside your liquid template.

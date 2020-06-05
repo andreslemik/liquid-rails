@@ -4,10 +4,7 @@ if ENV['CI'] || ENV['COVERAGE']
   require 'coveralls'
   require 'simplecov'
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-    SimpleCov::Formatter::HTMLFormatter,
-    Coveralls::SimpleCov::Formatter
-  ]
+  SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 
   SimpleCov.start do
     add_filter 'drop_example_group.rb'
