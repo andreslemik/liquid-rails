@@ -1,5 +1,7 @@
 language: ruby
 rvm: '2.6.6'
+os: linux
+dist: focal
 sudo: true
 
 env:
