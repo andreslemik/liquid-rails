@@ -11,7 +11,7 @@ module Liquid
       end
 
       before do
-        context.registers[:view] = ActionView::Base.new(lookup_context)
+        context.registers[:view] = ActionView::Base.new(lookup_context, {}, nil)
       end
 
       it 'translate with default locale' do

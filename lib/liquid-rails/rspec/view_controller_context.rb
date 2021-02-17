@@ -7,7 +7,7 @@ module Liquid
         extend ActiveSupport::Concern
 
         def setup_view_and_controller
-          @view                 = ActionView::Base.new(ActionView::LookupContext.new(File.expand_path('app/views')))
+          @view                 = ActionView::Base.new(lookup_context, {}, nil)
           @controller           = ActionController::Base.new
           @request              = ActionDispatch::TestRequest.new({ 'PATH_INFO' => '/' })
           @response             = ActionDispatch::TestResponse.new
@@ -18,6 +18,10 @@ module Liquid
           @view.assign_controller(@controller)
           @view.class.send(:include, @controller._helpers)
           @view.class.send(:include, ::Rails.application.routes.url_helpers)
+        end
+
+        def lookup_context
+          ActionView::LookupContext.new(File.expand_path('app/views'))
         end
 
         def view
