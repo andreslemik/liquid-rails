@@ -37,4 +37,8 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.include Capybara::RSpecMatchers
   config.include ActionController::TestCase::Behavior
+
+  config.include Liquid::Rails::Rspec::TagExampleGroup, type: :tag, file_path: %r{spec/tags}
+  config.include Liquid::Rails::Rspec::DropExampleGroup, type: :drop, file_path: %r{spec/drops}
+  config.include Liquid::Rails::Rspec::FilterExampleGroup, type: :filter, file_path: %r{spec/filters}
 end
