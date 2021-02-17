@@ -1,9 +1,9 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.1
+  ruby: circleci/ruby@1.1.2
 
 jobs:
-  test:
+  rails_60:
     parameters:
       ruby-version:
         type: string
@@ -12,13 +12,28 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - run: bundle install
-      - run: bundle exec rspec
+      - run: BUNDLE_GEMFILE=gemfiles/rails_60.gemfile bundle install
+      - run: BUNDLE_GEMFILE=gemfiles/rails_60.gemfile bundle exec rspec
+  rails_61:
+    parameters:
+      ruby-version:
+        type: string
+    docker:
+      - image: circleci/ruby:<< parameters.ruby-version >>
+    executor: ruby/default
+    steps:
+      - checkout
+      - run: BUNDLE_GEMFILE=gemfiles/rails_61.gemfile bundle install
+      - run: BUNDLE_GEMFILE=gemfiles/rails_61.gemfile bundle exec rspec
 
 workflows:
   build_and_test:
     jobs:
-      - test:
+      - rails_60:
+          matrix:
+            parameters:
+              ruby-version: ["2.7", "3.0"]
+      - rails_61:
           matrix:
             parameters:
               ruby-version: ["2.7", "3.0"]
