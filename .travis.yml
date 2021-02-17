@@ -1,5 +1,7 @@
 language: ruby
-rvm: '2.6.6'
+rvm:
+  - 2.7
+  - 3.0
 os: linux
 dist: focal
 sudo: true
@@ -9,6 +11,7 @@ env:
     - CC_TEST_REPORTER_ID=5efe53fe1d955a405cb8afc1b42883dc9243c4311d71ec082795de820c5d8284
 
 before_install:
+  - gem install bundler
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
 
@@ -33,5 +36,7 @@ cache:
 
 gemfile:
   - gemfiles/rails_60.gemfile
+  - gemfiles/rails_61.gemfile
+
 notifications:
   email: false
