@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andreslemik/liquid-rails.svg?branch=master)](https://travis-ci.org/andreslemik/liquid-rails)
+[![Build Status](https://travis-ci.com/andreslemik/liquid-rails.svg?branch=master)](https://travis-ci.org/andreslemik/liquid-rails)
 [![Coverage Status](https://api.codeclimate.com/v1/badges/92be0ba1bb4312fe8ea8/test_coverage)](https://codeclimate.com/github/andreslemik/liquid-rails/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/92be0ba1bb4312fe8ea8/maintainability)](https://codeclimate.com/github/andreslemik/liquid-rails/maintainability)
 # Liquid-Rails
