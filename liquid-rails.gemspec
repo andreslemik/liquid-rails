@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
 
   spec.add_dependency 'kaminari', '>= 1.2'
-  spec.add_dependency 'liquid',   '>= 4.0', '< 5.2'
+  spec.add_dependency 'liquid',   '>= 4.0', '< 5.5'
   spec.add_dependency 'rails',    '>= 5.0.6'
 end
